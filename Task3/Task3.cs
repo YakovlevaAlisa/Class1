@@ -12,7 +12,7 @@
  * f(x) = 	1,	если x принадлежит [0, 1), [2, 3), …,
            −1,	если x принадлежит [1, 2), [3, 4), … .
  */
-        internal static double F(double x) => throw new NotImplementedException();
+        internal static double F(double x) => (x < 0 ? 0 : (Math.Truncate(x) % 2 == 0 ? 1 : -1) );
 
 /*
  * Задание 3.2. Дан номер года (положительное целое число). Определить количество дней в этом году,
@@ -20,7 +20,7 @@
  * делящийся на 4, за исключением тех годов, которые делятся на 100 и не делятся на 400
  * (например, годы 300, 1300 и 1900 не являются високосными, а 1200 и 2000 — являются).
  */
-        internal static int NumberOfDays(int year) => throw new NotImplementedException();
+        internal static int NumberOfDays(int year) => (year % 4 == 0 && (year % 400 == 0 || year % 100 != 0) ? 366 : 365);
 
 /*
  * Задание 3.3. Локатор ориентирован на одну из сторон света («С» — север, «З» — запад,
@@ -31,9 +31,9 @@
  */
         internal static char Rotate2(char orientation, int cmd1, int cmd2)
         {
-            char rotate1(char orientation, int cmd) => throw new NotImplementedException();
+            char rotate1(char orientation, int cmd) => (orientation == 'С' ? (cmd == 1 ? 'З' : (cmd == -1 ? 'В' : 'Ю') ) : (orientation == 'З' ? (cmd == 1 ? 'Ю' : (cmd == -1 ? 'С' : 'В') ) : (orientation == 'Ю' ? (cmd == 1 ? 'В' : (cmd == -1 ? 'З' : 'С') ) : (cmd == 1 ? 'С' : (cmd == -1 ? 'Ю' : 'З') ) ) ) );
 
-            throw new NotImplementedException();
+            return rotate1(rotate1(orientation, cmd1), cmd2);
         }
 
 /*
@@ -47,13 +47,69 @@
  */
         internal static String AgeDescription(int age)
         {
-            throw new NotImplementedException();
+            string  result= "";
+            int ten = age / 10, one = age % 10;
+            switch (ten) {
+                case 2:
+                    result = "двадцать ";
+                    break;
+                case 3:
+                    result = "тридцать ";
+                    break;
+                case 4:
+                    result = "сорок ";
+                    break;
+                case 5:
+                    result = "пятьдесят ";
+                    break;
+                case 6:
+                    result = "шестьдесят ";
+                    break;
+                default:
+                    result = "возраст < 20 или > 69";
+                    break;
+            }
+            switch (one) {
+                case 1:
+                    result += "один год";
+                    break;
+                case 2:
+                    result += "два года";
+                    break;
+                case 3:
+                    result += "три года";
+                    break;
+                case 4:
+                    result += "четыре года";
+                    break;
+                case 5:
+                    result += "пять лет";
+                    break;
+                case 6:
+                    result += "шесть лет";
+                    break;
+                case 7:
+                    result += "семь лет";
+                    break;
+                case 8:
+                    result += "восемь лет";
+                    break;
+                case 9:
+                    result += "девять лет";
+                    break;
+                default:
+                    result += "лет";
+                    break;
+            }
+            return result;
         }
 
         public static void Main(string[] args)
         {
-            throw new NotImplementedException(
-                "Вызовите здесь все перечисленные в классе функции, как это сделано в предыдущих заданиях");
+            Console.WriteLine(F(0.0));
+            Console.WriteLine(NumberOfDays(2021));
+            Console.WriteLine(Rotate2('С', 1, -1));
+            Console.WriteLine(AgeDescription(42));
         }
     }
 }
