@@ -17,7 +17,15 @@
  */
         internal static void PrintFrame(int width, int height, char frameChar = '*')
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (i == 0 || j == 0 || i == height - 1 || j == width - 1) Console.Write(frameChar);
+                    else Console.Write(" ");
+                }
+                Console.Write("\n");
+            }
         }
 
 /*
@@ -25,7 +33,19 @@
  */
         internal static void PrintFrame2(int width, int height, char frameChar = '*')
         {
-            throw new NotImplementedException();
+            int i = 0, j;
+            while (i < height)
+            {
+                j = 0;
+                while (j < width)
+                {
+                    if (i == 0 || j == 0 || i == height - 1 || j == width - 1) Console.Write(frameChar);
+                    else Console.Write(" ");
+                    j++;
+                }
+                Console.Write("\n");
+                i++;
+            }
         }
 
 
@@ -37,7 +57,15 @@
  */
         internal static long Gcd(long a, long b)
         {
-            throw new NotImplementedException();
+            long temp;
+            if (b < a)
+            {
+                temp = b;
+                b = a;
+                a = temp;
+            }
+            if (a == 0) return b;
+            return Gcd(a, b % a);
         }
 
 /*
@@ -47,14 +75,24 @@
  */
         internal static double ExpTaylor(double x, int n)
         {
-            throw new NotImplementedException();
+            int i = 1;
+            double prev = x, s = 1;
+            while (i <= n)
+            {
+                s += prev;
+                i++;
+                prev *= (x / i);
+
+            }
+            return s;
         }
 
         public static void Main(string[] args)
         {
             PrintFrame(5, 3, '+');
-            throw new NotImplementedException(
-                "Вызовите здесь все перечисленные в классе функции, как это сделано в предыдущих заданиях");
+            PrintFrame2(5, 3, '+');
+            Gcd(2, 3);
+            ExpTaylor(0.0, 10);
         }
     }
 }
