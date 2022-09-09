@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 
 namespace Task5
 {
@@ -16,9 +17,13 @@ namespace Task5
             ComputeFib(args);
         }
 
-/*
- * Задание 5.2. Разберите код функции `demoInput`.
- */
+        /*
+        * Задание 5.2. Разберите код функции `demoInput`.
+        * Функция `demoInput`проверяет количество аргументов командной строки, если есть хотя бы 1 аргумент, то
+        * сохраняет их в переменную (name), разделяя ' '; иначе запрашивает имя пользователя с клавиатуры,
+        * сохраняет его в переменную (name).
+        * Затем приветствует его, печатая строку, состоящую из "Привет ", значения переменной name и символа '!' в конце.
+        */
         internal static void DemoInput(string[] args)
         {
             string name;
@@ -49,13 +54,29 @@ namespace Task5
         {
             if (n == 0) return 0;
             if (n == 1) return 1;
-            return Fib(n - 1) + Fib(n - 2);
+            BigInteger f2 = 1, f1 = 1, temp;
+            for (int i = 2; i < n; i++)
+            {
+                temp = f2;
+                f2 += f1;
+                f1 = temp;
+            }
+            return f2;
         }
 
         internal static void ComputeFib(string[] args)
         {
-            int n = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(Fib(n));
+            int len = args.Length, num;
+            for (int i = 0; i < len; i++)
+            {
+                bool test = int.TryParse(args[i], out num);
+                if (test) Console.WriteLine(Fib(num));
+            }
+            if (len == 0)
+            {
+                num = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(Fib(num));
+            }
         }
     }
 }

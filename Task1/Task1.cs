@@ -23,7 +23,7 @@ namespace Task1
         internal static void HelloUser()
         {
             string? val = Console.ReadLine();
-            Console.WriteLine($"Hello {val}!");
+            SayHello(val);
         }
 
 /*
