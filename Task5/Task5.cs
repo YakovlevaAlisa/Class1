@@ -52,31 +52,39 @@ namespace Task5
 
         internal static BigInteger Fib(int n)
         {
-            if (n == 0) return 0;
-            if (n == 1) return 1;
-            BigInteger f2 = 1, f1 = 1, temp;
+            if (n == 0 || n == 1) return n;
+
+            BigInteger f2 = 1;
+            BigInteger f1 = 1;
+
             for (int i = 2; i < n; i++)
             {
-                temp = f2;
+                BigInteger temporary;
+
+                temporary = f2;
                 f2 += f1;
-                f1 = temp;
+                f1 = temporary;
             }
+
             return f2;
         }
 
         internal static void ComputeFib(string[] args)
         {
-            int len = args.Length, num;
-            for (int i = 0; i < len; i++)
+            int number;
+
+            for (int i = 0; i < args.Length; i++)
             {
-                bool test = int.TryParse(args[i], out num);
-                if (test) Console.WriteLine(Fib(num));
+                if (int.TryParse(args[i], out number)) 
+                    Console.WriteLine(Fib(number));
             }
-            if (len == 0)
+
+            if (args.Length == 0)
             {
-                num = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine(Fib(num));
+                number = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(Fib(number));
             }
+
         }
     }
 }

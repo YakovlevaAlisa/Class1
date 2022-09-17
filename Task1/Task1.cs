@@ -22,8 +22,9 @@ namespace Task1
  */
         internal static void HelloUser()
         {
-            string? val = Console.ReadLine();
-            SayHello(val);
+            string? name = Console.ReadLine();
+
+            SayHello(name);
         }
 
 /*
@@ -35,6 +36,7 @@ namespace Task1
         internal static void Square()
         {
             int number = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine(number * number);
         }
 
@@ -46,15 +48,20 @@ namespace Task1
         {
             int number1 = Convert.ToInt32(Console.ReadLine());
             int number2 = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine(number1 + number2);
         }
 
         public static void Main(string[] args)
         {
             SayHello("World");
+
             HelloUser();
+
             Square();
+
             Sum();
+
         }
     }
 }

@@ -21,9 +21,12 @@
             {
                 for (int j = 0; j < width; j++)
                 {
-                    if (i == 0 || j == 0 || i == height - 1 || j == width - 1) Console.Write(frameChar);
-                    else Console.Write(" ");
+                    if (i == 0 || j == 0 || i == height - 1 || j == width - 1)
+                        Console.Write(frameChar);
+                    else 
+                        Console.Write(" ");
                 }
+
                 Console.Write("\n");
             }
         }
@@ -34,15 +37,20 @@
         internal static void PrintFrame2(int width, int height, char frameChar = '*')
         {
             int i = 0, j;
+
             while (i < height)
             {
                 j = 0;
+
                 while (j < width)
                 {
-                    if (i == 0 || j == 0 || i == height - 1 || j == width - 1) Console.Write(frameChar);
-                    else Console.Write(" ");
+                    if (i == 0 || j == 0 || i == height - 1 || j == width - 1)
+                        Console.Write(frameChar);
+                    else
+                        Console.Write(" ");
                     j++;
                 }
+
                 Console.Write("\n");
                 i++;
             }
@@ -57,14 +65,17 @@
  */
         internal static long Gcd(long a, long b)
         {
-            long temp;
             if (b < a)
             {
-                temp = b;
+                long temporary = b;
+
                 b = a;
-                a = temp;
+                a = temporary;
             }
-            if (a == 0) return b;
+
+            if (a == 0)
+                return b;
+
             return Gcd(a, b % a);
         }
 
@@ -76,23 +87,29 @@
         internal static double ExpTaylor(double x, int n)
         {
             int i = 1;
-            double prev = x, s = 1;
+            double result = 1;
+            double addend = x;
+
             while (i <= n)
             {
-                s += prev;
                 i++;
-                prev *= (x / i);
-
+                result += addend;
+                addend *= (x / i);
             }
-            return s;
+
+            return result;
         }
 
         public static void Main(string[] args)
         {
             PrintFrame(5, 3, '+');
+
             PrintFrame2(5, 3, '+');
+
             Gcd(2, 3);
+
             ExpTaylor(0.0, 10);
+
         }
     }
 }

@@ -48,68 +48,46 @@
         internal static String AgeDescription(int age)
         {
             string  result= "";
-            int ten = age / 10, one = age % 10;
-            switch (ten) {
-                case 2:
-                    result = "двадцать ";
-                    break;
-                case 3:
-                    result = "тридцать ";
-                    break;
-                case 4:
-                    result = "сорок ";
-                    break;
-                case 5:
-                    result = "пятьдесят ";
-                    break;
-                case 6:
-                    result = "шестьдесят ";
-                    break;
-                default:
-                    result = "возраст < 20 или > 69";
-                    break;
-            }
-            switch (one) {
-                case 1:
-                    result += "один год";
-                    break;
-                case 2:
-                    result += "два года";
-                    break;
-                case 3:
-                    result += "три года";
-                    break;
-                case 4:
-                    result += "четыре года";
-                    break;
-                case 5:
-                    result += "пять лет";
-                    break;
-                case 6:
-                    result += "шесть лет";
-                    break;
-                case 7:
-                    result += "семь лет";
-                    break;
-                case 8:
-                    result += "восемь лет";
-                    break;
-                case 9:
-                    result += "девять лет";
-                    break;
-                default:
-                    result += "лет";
-                    break;
-            }
+            int ten = age / 10;
+            int one = age % 10;
+
+            result = ten switch
+            {
+                2 => "двадцать ",
+                3 => "тридцать ",
+                4 => "сорок ",
+                5 => "пятьдесят ",
+                6 => "шестьдесят ",
+                _ => "возраст < 20 или > 69",
+            };
+
+            result += one switch
+            {
+                1 => "один год",
+                2 => "два года",
+                3 => "три года",
+                4 => "четыре года",
+                5 => "пять лет",
+                6 => "шесть лет",
+                7 => "семь лет",
+                8 => "восемь лет",
+                9 => "девять лет",
+                _ => "лет",
+            };
+
             return result;
         }
 
         public static void Main(string[] args)
         {
-            Console.WriteLine(F(0.0));
+            Console.WriteLine(F((1 / 3) * 3));
+
             Console.WriteLine(NumberOfDays(2021));
+
             Console.WriteLine(Rotate2('С', 1, -1));
+
             Console.WriteLine(AgeDescription(42));
+
         }
     }
 }

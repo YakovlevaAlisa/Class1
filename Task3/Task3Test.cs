@@ -14,7 +14,7 @@ public class Tests
         That(F(-13.7), Is.EqualTo(0.0).Within(1e-5));
         That(F(7.0), Is.EqualTo(-1.0).Within(1e-5));
         That(F(7.7), Is.EqualTo(-1.0).Within(1e-5));
-        That(F(24 / 5), Is.EqualTo(1.0).Within(1e-5));
+        That(F((1/3)*3), Is.EqualTo(1.0).Within(1e-5));
     }
 
     [Test]

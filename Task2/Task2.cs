@@ -17,10 +17,14 @@
  */
         internal static int Min3(int a, int b, int c)
         {
-            var minim = a;
-            if (b < minim) minim = b;
-            if (c < minim) minim = c;
-            return minim; 
+            var minimum = a;
+
+            if (b < minimum)
+                minimum = b;
+            if (c < minimum)
+                minimum = c;
+
+            return minimum; 
         }
 
 /*
@@ -45,9 +49,13 @@
         public static void Main(string[] args)
         {
             Console.WriteLine(Min3(2, 0, 3));
+
             Console.WriteLine(Max3(2, 0, 3));
+
             Console.WriteLine(Deg2Rad(180.0));
+
             Console.WriteLine(Rad2Deg(Math.PI));
+
         }
     }
 }
